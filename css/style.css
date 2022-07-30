@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    background-color: #fff;
+    width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 2px 2px 10px black;
+    border-radius: 5px;
+}
+/* Menambahkan font baru */
+@font-face {
+    font-family: 'BebasNeue';
+    src: url(../font/BebasNeue-Regular.woff) format('woff');
+}
+/* Style Utama */
+body{
+    font: 18px/36px 'BebasNeue','Arial Narrow',arial,sans-serif;
+    background-color: #eee;
+}
+h1{
+    font-size: 80px;
+    margin: 30px 0;
+    text-align: center;
+    text-shadow: 1px 1px 2px black;
+
+}
+.gallery{
+    margin: 5px auto;
+}
+.gallery li {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    /* overflow: hidden; */
+    border: 5px solid rgb(163, 163, 163);
+    float: left;
+    margin: 10px;
+    position: relative;
+}
+.gallery li span{
+    display: block;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(200,200,200,0.5);
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 120px;
+    /* color: rgba(200,200,200,0.5); */
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+    color: rgb(0, 0, 0);
+    opacity: 0;
+    transform: scale(0) rotate(0);
+    transition: 0.3s;
+}
+.gallery li a:hover span{
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+}
+.clear{
+    clear: both;
+}
+.gallery li,
+.gallery li span, 
+.gallery li a .thumbnail{
+    border-radius: 50%;
+    width: 120px ;
+    height: 120px;
+}
+.overlay{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+    transition: 1s;
+    text-align: center;
+    padding: 100px;
+}
+/* Memunculkan popup */
+.overlay:target{
+    width: auto;
+    height: auto;
+    right: 0;
+    bottom: 0;
+    /* z-index: 1000; */
+    background: rgba(0, 0, 0, 0.5);
+    /* filter: blur(10px); */
+}
+.overlay img{
+    /* Tingginya menyesuaikan layar monitor */
+    max-height: 100%;
+}
+.overlay:target img{
+    animation: zoomFade 1s;
+}
+.overlay .close{
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -20px;
+    color: #eee;
+}
+/* Animasi */
+@keyframes zoomFade {
+    0%{
+        transform: scale(0);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
